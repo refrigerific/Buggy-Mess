@@ -861,7 +861,6 @@ MonoBehaviour:
   maxAmmo: 6
   fireRate: 1
   reloadDuration: 6
-  damagePerBullet: 10
   weaponAnimator: {fileID: 0}
   audioSource: {fileID: 0}
   fireClip: {fileID: 0}
@@ -869,6 +868,22 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   barrelEnd: {fileID: 161740029}
   bulletPrefab: {fileID: 4211097150041956810, guid: c08acc2be8d5e3049abb1bf9eb40be2e, type: 3}
+  recoil: {fileID: 974626230}
+--- !u!114 &974626230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974626224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34e14763bd88f74fbb6b9dd6421a02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilAmount: 10
+  recoilSpeed: 10
+  recoverySpeed: 5
 --- !u!1 &1622025278
 GameObject:
   m_ObjectHideFlags: 0

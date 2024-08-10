@@ -9,7 +9,6 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected int maxAmmo;
     [SerializeField] protected float fireRate;
     [SerializeField] protected float reloadDuration;
-    [SerializeField] protected float damagePerBullet;
 
     [Header("References")]
     [SerializeField] protected Animator weaponAnimator;

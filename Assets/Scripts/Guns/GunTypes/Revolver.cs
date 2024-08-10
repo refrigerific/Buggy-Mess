@@ -9,6 +9,7 @@ public class Revolver : WeaponBase
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private Transform barrelEnd;
     [SerializeField] private BulletBase bulletPrefab;
+    [SerializeField] private Recoil recoil;
 
     private void Update()
     {
@@ -45,6 +46,8 @@ public class Revolver : WeaponBase
         //
         //TODO: Objectpoola
         BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
+
+        recoil.ApplyRecoil();
     }
 
     public override void Reload()
