@@ -51,6 +51,8 @@ public class AlternateEnemyController : MonoBehaviour
         else
         {
             // Om spelaren är längre bort än walkDistance, stoppa animationen
+            // Vi sätter fortfarande tillståndet till "Walk" här
+            // Om detta inte är önskat kan du använda en annan animation eller stanna
             SetAnimationState("Walk");
         }
     }
