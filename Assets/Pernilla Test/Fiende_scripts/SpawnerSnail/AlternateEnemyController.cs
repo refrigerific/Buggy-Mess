@@ -18,13 +18,19 @@ public class AlternateEnemyController : MonoBehaviour
     private float enemyHealth = 100f;
     public float damageThreshold = 0f; // Fienden dör vid 0 hälsa
 
+    // Booleaner för animationstillstånd
+    private bool isWalking = false;
+    private bool isAttacking = false;
+    private bool isDead = false;
+
     void Start()
     {
         // Hämta Animator-komponenten från GameObject
         animator = GetComponent<Animator>();
 
         // Sätt initialt tillstånd till Walking
-        SetAnimationState("Walk");
+        isWalking = true;
+        SetAnimationState();
     }
 
     void Update()
@@ -35,26 +41,31 @@ public class AlternateEnemyController : MonoBehaviour
         // Kontrollera om fienden har tagit tillräckligt med skada för att dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState("Death");
+            isDead = true;
+            SetAnimationState();
             return;
         }
 
         // Uppdatera fiendens tillstånd baserat på avståndet till spelaren
         if (distanceToPlayer <= attackDistance)
         {
-            SetAnimationState("Attack");
+            isAttacking = true;
+            isWalking = false;
         }
         else if (distanceToPlayer > attackDistance && distanceToPlayer <= walkDistance)
         {
-            SetAnimationState("Walk");
+            isWalking = true;
+            isAttacking = false;
         }
         else
         {
             // Om spelaren är längre bort än walkDistance, stoppa animationen
-            // Vi sätter fortfarande tillståndet till "Walk" här
             // Om detta inte är önskat kan du använda en annan animation eller stanna
-            SetAnimationState("Walk");
+            isWalking = false;
+            isAttacking = false;
         }
+
+        SetAnimationState();
     }
 
     // Anropas när fienden tar skada
@@ -65,19 +76,17 @@ public class AlternateEnemyController : MonoBehaviour
         // Kontrollera om fienden ska dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState("Death");
+            isDead = true;
+            SetAnimationState();
         }
     }
 
     // Metod för att sätta animationstillstånd
-    void SetAnimationState(string state)
+    void SetAnimationState()
     {
-        // Reset alla animationstriggers
-        animator.ResetTrigger("Attack");
-        animator.ResetTrigger("Walk");
-        animator.ResetTrigger("Death");
-
-        // Sätt animationstrigger beroende på tillstånd
-        animator.SetTrigger(state);
+        // Sätt booleaner för animationstillstånd
+        animator.SetBool("IsWalking", isWalking);
+        animator.SetBool("IsAttacking", isAttacking);
+        animator.SetBool("IsDead", isDead);
     }
 }

@@ -28,6 +28,17 @@ public class EnemyController : MonoBehaviour
     private float gameTime = 0f;
     public float buffTime = 40f; // Tid efter vilken buff-animationen ska spelas
 
+    // Booleaner för animationstillstånd
+    private bool IsIdle = false;
+    private bool IsWalking = false;
+    private bool IsWalkingAndDodging = false;
+    private bool IsRunningAndFleeing = false;
+    private bool IsDodging = false;
+    private bool IsDead = false;
+    private bool IsBuffed = false;
+    private bool IsAttacking = false;
+    private bool IsAttackingAndWalking = false;
+
     void Start()
     {
         // Hämta Animator-komponenten från GameObject
@@ -35,7 +46,7 @@ public class EnemyController : MonoBehaviour
 
         // Sätt initialt tillstånd
         currentState = EnemyState.Idle;
-        SetAnimationState(currentState);
+        SetAnimationState();
     }
 
     void Update()
@@ -49,38 +60,42 @@ public class EnemyController : MonoBehaviour
         // Kontrollera om fienden har tagit tillräckligt med skada för att dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState(EnemyState.Death);
+            currentState = EnemyState.Death;
+            SetAnimationState();
             return;
         }
 
-        // Om spelet har varit igång i mer än 40 sekunder, spela buff-animation
+        // Om spelet har varit igång i mer än buffTime sekunder, spela buff-animation
         if (gameTime >= buffTime)
         {
-            SetAnimationState(EnemyState.Buff);
+            currentState = EnemyState.Buff;
+            SetAnimationState();
             return;
         }
 
         // Uppdatera fiendens tillstånd baserat på avståndet till spelaren
         if (distanceToPlayer > idleDistance)
         {
-            SetAnimationState(EnemyState.Idle);
+            currentState = EnemyState.Idle;
         }
         else if (distanceToPlayer <= idleDistance && distanceToPlayer > walkDistance)
         {
-            SetAnimationState(EnemyState.Walk);
+            currentState = EnemyState.Walk;
         }
         else if (distanceToPlayer <= walkDistance && distanceToPlayer > runAndFleeDistance)
         {
-            SetAnimationState(EnemyState.WalkAndDodge);
+            currentState = EnemyState.WalkAndDodge;
         }
         else if (distanceToPlayer <= runAndFleeDistance && distanceToPlayer > attackDistance)
         {
-            SetAnimationState(EnemyState.RunAndFlee);
+            currentState = EnemyState.RunAndFlee;
         }
         else if (distanceToPlayer <= attackDistance)
         {
-            SetAnimationState(EnemyState.Attack);
+            currentState = EnemyState.Attack;
         }
+
+        SetAnimationState();
     }
 
     // Anropas när fienden tar skada
@@ -91,59 +106,66 @@ public class EnemyController : MonoBehaviour
         // Spela dodge-animation om fienden inte redan är i dödsanimation
         if (currentState != EnemyState.Death)
         {
-            SetAnimationState(EnemyState.Dodge);
+            currentState = EnemyState.Dodge;
+            SetAnimationState();
         }
     }
 
     // Metod för att sätta animationstillstånd
-    void SetAnimationState(EnemyState newState)
+    void SetAnimationState()
     {
-        if (currentState == newState)
-            return;
+        // Reset alla booleaner
+        IsIdle = false;
+        IsWalking = false;
+        IsWalkingAndDodging = false;
+        IsRunningAndFleeing = false;
+        IsDodging = false;
+        IsDead = false;
+        IsBuffed = false;
+        IsAttacking = false;
+        IsAttackingAndWalking = false;
 
-        currentState = newState;
-
-        // Reset alla animationstriggers
-        animator.ResetTrigger("Idle");
-        animator.ResetTrigger("Walk");
-        animator.ResetTrigger("WalkAndDodge");
-        animator.ResetTrigger("RunAndFlee");
-        animator.ResetTrigger("Dodge");
-        animator.ResetTrigger("Death");
-        animator.ResetTrigger("Buff");
-        animator.ResetTrigger("Attack");
-        animator.ResetTrigger("AttackAndWalk");
-
-        // Sätt nya animationstrigger beroende på tillstånd
+        // Sätt nya booleaner beroende på tillstånd
         switch (currentState)
         {
             case EnemyState.Idle:
-                animator.SetTrigger("Idle");
+                IsIdle = true;
                 break;
             case EnemyState.Walk:
-                animator.SetTrigger("Walk");
+                IsWalking = true;
                 break;
             case EnemyState.WalkAndDodge:
-                animator.SetTrigger("WalkAndDodge");
+                IsWalkingAndDodging = true;
                 break;
             case EnemyState.RunAndFlee:
-                animator.SetTrigger("RunAndFlee");
+                IsRunningAndFleeing = true;
                 break;
             case EnemyState.Dodge:
-                animator.SetTrigger("Dodge");
+                IsDodging = true;
                 break;
             case EnemyState.Death:
-                animator.SetTrigger("Death");
+                IsDead = true;
                 break;
             case EnemyState.Buff:
-                animator.SetTrigger("Buff");
+                IsBuffed = true;
                 break;
             case EnemyState.Attack:
-                animator.SetTrigger("Attack");
+                IsAttacking = true;
                 break;
             case EnemyState.AttackAndWalk:
-                animator.SetTrigger("AttackAndWalk");
+                IsAttackingAndWalking = true;
                 break;
         }
+
+        // Uppdatera animationstillstånd i Animator
+        animator.SetBool("IsIdle", IsIdle);
+        animator.SetBool("IsWalking", IsWalking);
+        animator.SetBool("IsWalkingAndDodging", IsWalkingAndDodging);
+        animator.SetBool("IsRunningAndFleeing", IsRunningAndFleeing);
+        animator.SetBool("IsDodging", IsDodging);
+        animator.SetBool("IsDead", IsDead);
+        animator.SetBool("IsBuffed", IsBuffed);
+        animator.SetBool("IsAttacking", IsAttacking);
+        animator.SetBool("IsAttackingAndWalking", IsAttackingAndWalking);
     }
 }
