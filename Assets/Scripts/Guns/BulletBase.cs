@@ -4,10 +4,13 @@ using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
 {
+    [Header("General Specifics")]
     [SerializeField] protected float speed = 50f;
     [SerializeField] protected float damage = 10f;
     [SerializeField] protected float lifeTime = 5f;
-    [SerializeField] protected GameObject hitEffectPrefab;
+    [Header("Bullet Specifics")]
+    [SerializeField] protected GameObject hitEffectPrefab;//Gör en lista och bytt till typ partikeleffekter
+    //[SerializeField] protected TrailRenderer trailRenderer;
 
     protected Rigidbody rb;
 
@@ -16,6 +19,15 @@ public abstract class BulletBase : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
 
+        //if (trailRenderer != null)
+        //{
+        //    trailRenderer.time = 0.2f;
+        //    trailRenderer.startWidth = 0.1f;
+        //    trailRenderer.endWidth = 0f;
+        //    trailRenderer.startColor = Color.white;
+        //    trailRenderer.endColor = new Color(1, 1, 1, 0);
+        //}
+
         Destroy(gameObject, lifeTime);
     }
 
@@ -23,13 +35,7 @@ public abstract class BulletBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        OnHit(other);
-
-        if (hitEffectPrefab != null)
-        {
-            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-        }
-
+        OnHit(other);       
         Destroy(gameObject);
     }
 }
