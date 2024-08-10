@@ -7,10 +7,8 @@ public class Revolver : WeaponBase
 {
     [Header("Revolver Specifics")]
     [SerializeField] private ParticleSystem muzzleFlash;
-    [SerializeField] private GameObject bulletImpactPrefab;
-    [SerializeField] private float shootRange = 100f;
-    [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform barrelEnd;
+    [SerializeField] private BulletBase bulletPrefab;
 
     private void Update()
     {
@@ -39,25 +37,14 @@ public class Revolver : WeaponBase
 
     public override void Fire()
     {
-        Vector3 shootDirection = playerCamera.transform.forward;
         currentAmmo--;
         //muzzleFlash.Play();TODO
         //Temp
         audioSource.PlayOneShot(fireClip);
         //weaponAnimator.SetTrigger("Fire");
         //
-
-        RaycastHit hit;
-        if(Physics.Raycast(playerCamera.transform.position, shootDirection, out hit, shootRange))
-        {
-            Debug.Log($"Hit: {hit.transform.name}");
-
-
-
-            //Impact grejen, Ändra till setactive maybe
-            GameObject impact = Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impact, 2f);
-        }        
+        //TODO: Objectpoola
+        BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
     }
 
     public override void Reload()
