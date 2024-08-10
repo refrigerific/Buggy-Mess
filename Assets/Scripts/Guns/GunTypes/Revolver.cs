@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using TMPro;
 using UnityEngine;
 
 public class Revolver : WeaponBase
 {
     [Header("Revolver Specifics")]
+    [SerializeField] private GameObject bulletCasingPrefab;
+    [SerializeField] private Transform casingEjectionPoint;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private Transform barrelEnd;
     [SerializeField] private BulletBase bulletPrefab;
     [SerializeField] private Recoil recoil;
+    [SerializeField] private TextMeshProUGUI ammoText;
 
     private void Update()
     {
@@ -34,11 +38,17 @@ public class Revolver : WeaponBase
         }
 
         if(currentAmmo == 0) { Reload(); }
+        UpdateAmmoUI();
     }
 
     public override void Fire()
     {
         currentAmmo--;
+        if (bulletCasingPrefab != null && casingEjectionPoint != null)
+        {
+            Instantiate(bulletCasingPrefab, casingEjectionPoint.position, casingEjectionPoint.rotation);
+        }
+
         //muzzleFlash.Play();TODO
         //Temp
         audioSource.PlayOneShot(fireClip);
@@ -46,6 +56,8 @@ public class Revolver : WeaponBase
         //
         //TODO: Objectpoola
         BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
+
+        
 
         recoil.ApplyRecoil();
     }
@@ -69,5 +81,13 @@ public class Revolver : WeaponBase
         yield return new WaitForSeconds(reloadDuration);
         currentAmmo = maxAmmo;
         isReloading = false;
+    }
+
+    private void UpdateAmmoUI()
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = currentAmmo.ToString();
+        }
     }
 }

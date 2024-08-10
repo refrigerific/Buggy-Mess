@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4211097150041956810}
   - component: {fileID: 7098572894863737657}
   - component: {fileID: -6785506547490286149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2526634641302515767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.384277, y: 8.19032, z: 1.2292308}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -175,7 +175,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.4
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
