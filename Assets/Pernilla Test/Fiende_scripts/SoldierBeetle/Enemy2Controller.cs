@@ -14,6 +14,15 @@ public class Enemy2Controller : MonoBehaviour
     private enum EnemyState { Walk, AttackAndWalk, RunAndFlee, WalkAndDodge, Death, Dodge, Attack }
     private EnemyState currentState;
 
+    // Booleaner för animationstillstånd
+    private bool IsWalking = false;
+    private bool IsAttackingAndWalking = false;
+    private bool IsRunningAndFleeing = false;
+    private bool IsWalkingAndDodging = false;
+    private bool IsDead = false;
+    private bool IsDodging = false;
+    private bool IsAttacking = false;
+
     // Avståndströsklar för olika beteenden
     public float walkDistance = 10f;
     public float runAndFleeDistance = 7f;
@@ -30,7 +39,7 @@ public class Enemy2Controller : MonoBehaviour
 
         // Sätt initialt tillstånd
         currentState = EnemyState.Walk;
-        SetAnimationState(currentState);
+        SetAnimationState();
     }
 
     void Update()
@@ -41,27 +50,30 @@ public class Enemy2Controller : MonoBehaviour
         // Kontrollera om fienden har tagit tillräckligt med skada för att dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState(EnemyState.Death);
+            currentState = EnemyState.Death;
+            SetAnimationState();
             return;
         }
 
         // Uppdatera fiendens tillstånd baserat på avståndet till spelaren
         if (distanceToPlayer > walkDistance)
         {
-            SetAnimationState(EnemyState.Walk);
+            currentState = EnemyState.Walk;
         }
         else if (distanceToPlayer <= walkDistance && distanceToPlayer > runAndFleeDistance)
         {
-            SetAnimationState(EnemyState.AttackAndWalk);
+            currentState = EnemyState.AttackAndWalk;
         }
         else if (distanceToPlayer <= runAndFleeDistance && distanceToPlayer > attackDistance)
         {
-            SetAnimationState(EnemyState.RunAndFlee);
+            currentState = EnemyState.RunAndFlee;
         }
         else if (distanceToPlayer <= attackDistance)
         {
-            SetAnimationState(EnemyState.Attack);
+            currentState = EnemyState.Attack;
         }
+
+        SetAnimationState();
     }
 
     // Anropas när fienden tar skada
@@ -72,51 +84,56 @@ public class Enemy2Controller : MonoBehaviour
         // Spela dodge-animation om fienden inte redan är i dödsanimation
         if (currentState != EnemyState.Death)
         {
-            SetAnimationState(EnemyState.Dodge);
+            currentState = EnemyState.Dodge;
+            SetAnimationState();
         }
     }
 
     // Metod för att sätta animationstillstånd
-    void SetAnimationState(EnemyState newState)
+    void SetAnimationState()
     {
-        if (currentState == newState)
-            return;
+        // Reset alla booleaner
+        IsWalking = false;
+        IsAttackingAndWalking = false;
+        IsRunningAndFleeing = false;
+        IsWalkingAndDodging = false;
+        IsDead = false;
+        IsDodging = false;
+        IsAttacking = false;
 
-        currentState = newState;
-
-        // Reset alla animationstriggers
-        animator.ResetTrigger("Walk");
-        animator.ResetTrigger("AttackAndWalk");
-        animator.ResetTrigger("RunAndFlee");
-        animator.ResetTrigger("WalkAndDodge");
-        animator.ResetTrigger("Death");
-        animator.ResetTrigger("Dodge");
-        animator.ResetTrigger("Attack");
-
-        // Sätt nya animationstrigger beroende på tillstånd
+        // Sätt nya booleaner beroende på tillstånd
         switch (currentState)
         {
             case EnemyState.Walk:
-                animator.SetTrigger("Walk");
+                IsWalking = true;
                 break;
             case EnemyState.AttackAndWalk:
-                animator.SetTrigger("AttackAndWalk");
+                IsAttackingAndWalking = true;
                 break;
             case EnemyState.RunAndFlee:
-                animator.SetTrigger("RunAndFlee");
+                IsRunningAndFleeing = true;
                 break;
             case EnemyState.WalkAndDodge:
-                animator.SetTrigger("WalkAndDodge");
+                IsWalkingAndDodging = true;
                 break;
             case EnemyState.Death:
-                animator.SetTrigger("Death");
+                IsDead = true;
                 break;
             case EnemyState.Dodge:
-                animator.SetTrigger("Dodge");
+                IsDodging = true;
                 break;
             case EnemyState.Attack:
-                animator.SetTrigger("Attack");
+                IsAttacking = true;
                 break;
         }
+
+        // Uppdatera animationstillstånd i Animator
+        animator.SetBool("IsWalking", IsWalking);
+        animator.SetBool("IsAttackingAndWalking", IsAttackingAndWalking);
+        animator.SetBool("IsRunningAndFleeing", IsRunningAndFleeing);
+        animator.SetBool("IsWalkingAndDodging", IsWalkingAndDodging);
+        animator.SetBool("IsDead", IsDead);
+        animator.SetBool("IsDodging", IsDodging);
+        animator.SetBool("IsAttacking", IsAttacking);
     }
 }

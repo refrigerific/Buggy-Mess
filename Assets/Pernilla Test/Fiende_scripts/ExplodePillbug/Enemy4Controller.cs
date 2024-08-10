@@ -14,6 +14,14 @@ public class Enemy4Controller : MonoBehaviour
     private enum EnemyState { Idle, Attack, Run, RunAndRush, Death, Jump }
     private EnemyState currentState;
 
+    // Booleaner för animationstillstånd
+    private bool isIdle = false;
+    private bool isAttacking = false;
+    private bool isRunning = false;
+    private bool isRunningAndRushing = false;
+    private bool isDead = false;
+    private bool isJumping = false;
+
     // Avståndströsklar för olika beteenden
     public float idleDistance = 15f;
     public float runDistance = 10f;
@@ -31,7 +39,7 @@ public class Enemy4Controller : MonoBehaviour
 
         // Sätt initialt tillstånd
         currentState = EnemyState.Idle;
-        SetAnimationState(currentState);
+        SetAnimationState();
     }
 
     void Update()
@@ -42,32 +50,34 @@ public class Enemy4Controller : MonoBehaviour
         // Kontrollera om fienden har tagit tillräckligt med skada för att dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState(EnemyState.Death);
+            currentState = EnemyState.Death;
+            SetAnimationState();
             return;
         }
 
         // Uppdatera fiendens tillstånd baserat på avståndet till spelaren
         if (distanceToPlayer > idleDistance)
         {
-            SetAnimationState(EnemyState.Idle);
+            currentState = EnemyState.Idle;
         }
         else if (distanceToPlayer <= idleDistance && distanceToPlayer > runDistance)
         {
-            SetAnimationState(EnemyState.Run);
+            currentState = EnemyState.Run;
         }
         else if (distanceToPlayer <= runDistance && distanceToPlayer > runAndRushDistance)
         {
-            SetAnimationState(EnemyState.RunAndRush);
+            currentState = EnemyState.RunAndRush;
         }
         else if (distanceToPlayer <= runAndRushDistance && distanceToPlayer > attackDistance)
         {
-            // Möjlighet att fienden hoppar ibland, beroende på speldesign
-            SetAnimationState(EnemyState.Jump);
+            currentState = EnemyState.Jump;
         }
         else if (distanceToPlayer <= attackDistance)
         {
-            SetAnimationState(EnemyState.Attack);
+            currentState = EnemyState.Attack;
         }
+
+        SetAnimationState();
     }
 
     // Anropas när fienden tar skada
@@ -78,47 +88,51 @@ public class Enemy4Controller : MonoBehaviour
         // Kontrollera om fienden ska dö
         if (enemyHealth <= damageThreshold)
         {
-            SetAnimationState(EnemyState.Death);
+            currentState = EnemyState.Death;
+            SetAnimationState();
         }
     }
 
     // Metod för att sätta animationstillstånd
-    void SetAnimationState(EnemyState newState)
+    void SetAnimationState()
     {
-        if (currentState == newState)
-            return;
+        // Reset alla booleaner
+        isIdle = false;
+        isAttacking = false;
+        isRunning = false;
+        isRunningAndRushing = false;
+        isDead = false;
+        isJumping = false;
 
-        currentState = newState;
-
-        // Reset alla animationstriggers
-        animator.ResetTrigger("Idle");
-        animator.ResetTrigger("Attack");
-        animator.ResetTrigger("Run");
-        animator.ResetTrigger("RunAndRush");
-        animator.ResetTrigger("Death");
-        animator.ResetTrigger("Jump");
-
-        // Sätt nya animationstrigger beroende på tillstånd
+        // Sätt nya booleaner beroende på tillstånd
         switch (currentState)
         {
             case EnemyState.Idle:
-                animator.SetTrigger("Idle");
+                isIdle = true;
                 break;
             case EnemyState.Attack:
-                animator.SetTrigger("Attack");
+                isAttacking = true;
                 break;
             case EnemyState.Run:
-                animator.SetTrigger("Run");
+                isRunning = true;
                 break;
             case EnemyState.RunAndRush:
-                animator.SetTrigger("RunAndRush");
+                isRunningAndRushing = true;
                 break;
             case EnemyState.Death:
-                animator.SetTrigger("Death");
+                isDead = true;
                 break;
             case EnemyState.Jump:
-                animator.SetTrigger("Jump");
+                isJumping = true;
                 break;
         }
+
+        // Uppdatera animationstillstånd i Animator
+        animator.SetBool("IsIdle", isIdle);
+        animator.SetBool("IsAttacking", isAttacking);
+        animator.SetBool("IsRunning", isRunning);
+        animator.SetBool("IsRunningAndRushing", isRunningAndRushing);
+        animator.SetBool("IsDead", isDead);
+        animator.SetBool("IsJumping", isJumping);
     }
 }
