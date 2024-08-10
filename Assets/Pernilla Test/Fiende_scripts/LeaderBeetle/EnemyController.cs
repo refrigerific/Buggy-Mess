@@ -94,6 +94,11 @@ public class EnemyController : MonoBehaviour
         {
             currentState = EnemyState.Attack;
         }
+        else
+        {
+            // Om ingen annan tillstånd är aktiv, återgå till Idle
+            currentState = EnemyState.Idle;
+        }
 
         SetAnimationState();
     }
