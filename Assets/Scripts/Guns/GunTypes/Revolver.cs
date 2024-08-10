@@ -11,7 +11,6 @@ public class Revolver : WeaponBase
     [SerializeField] private float shootRange = 100f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform barrelEnd;
-    [SerializeField] private LineRenderer bulletTrail;
 
     private void Update()
     {
@@ -58,15 +57,7 @@ public class Revolver : WeaponBase
             //Impact grejen, Ändra till setactive maybe
             GameObject impact = Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impact, 2f);
-
-            StartCoroutine(ShowBulletTrail(hit.point));
-        }
-        else
-        {
-            Vector3 endPoint = playerCamera.transform.position + shootDirection * shootRange;
-            StartCoroutine(ShowBulletTrail(endPoint));
-        }
-
+        }        
     }
 
     public override void Reload()
@@ -88,19 +79,5 @@ public class Revolver : WeaponBase
         yield return new WaitForSeconds(reloadDuration);
         currentAmmo = maxAmmo;
         isReloading = false;
-    }
-
-    private IEnumerator ShowBulletTrail(Vector3 hitPoint)
-    {
-        bulletTrail.SetPosition(0, barrelEnd.position);
-        bulletTrail.SetPosition(1, hitPoint);
-
-        Debug.DrawLine(barrelEnd.position, hitPoint, Color.red, 2f);
-
-        bulletTrail.enabled = true;
-
-        yield return new WaitForSeconds(1f);
-
-        bulletTrail.enabled = false;
     }
 }
