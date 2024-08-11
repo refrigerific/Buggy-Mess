@@ -112,6 +112,7 @@ public class PillbugAI : MonoBehaviour
     public EventReference takeDamageSFX;
     public EventReference hitFeedback;
     public EventReference deathSFX;
+    public EventReference killFeedBack;
     private void TakeDamage()
     {
         //TODO fiendeHealthBars �ndringar     
@@ -126,6 +127,7 @@ public class PillbugAI : MonoBehaviour
         gameObject.SetActive(false);
         //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
         RuntimeManager.PlayOneShotAttached(deathSFX, gameObject);
+        RuntimeManager.PlayOneShotAttached(killFeedBack, gameObject);
     }
 
     //Hj�lpMetoder

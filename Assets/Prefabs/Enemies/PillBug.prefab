@@ -573,6 +573,34 @@ MonoBehaviour:
   attackCooldown: 1
   attackTime: 1.5
   lowHealthMovementSpeed: 5
+  takeDamageSFX:
+    Guid:
+      Data1: -1496382147
+      Data2: 1117892084
+      Data3: -63247470
+      Data4: 754574807
+    Path: event:/Sounds/Ingame/Enemy/Enemy Hit
+  hitFeedback:
+    Guid:
+      Data1: 278018485
+      Data2: 1105738745
+      Data3: -628878681
+      Data4: -1878950931
+    Path: event:/Sounds/Ingame/Enemy/Hit Feedback
+  deathSFX:
+    Guid:
+      Data1: 1063097907
+      Data2: 1109164865
+      Data3: -43970883
+      Data4: -549262502
+    Path: event:/Sounds/Ingame/Enemy/Enemy Death
+  killFeedBack:
+    Guid:
+      Data1: -1922720577
+      Data2: 1104205303
+      Data3: 603117704
+      Data4: -946857042
+    Path: event:/Sounds/Ingame/Enemy/Kill Feedback
 --- !u!114 &3296570498059671406
 MonoBehaviour:
   m_ObjectHideFlags: 0
