@@ -110,12 +110,14 @@ public class PillbugAI : MonoBehaviour
 
     //[BankRef] public string SFX;
     public EventReference takeDamageSFX;
+    public EventReference hitFeedback;
     public EventReference deathSFX;
     private void TakeDamage()
     {
         //TODO fiendeHealthBars �ndringar     
         //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
         RuntimeManager.PlayOneShotAttached(takeDamageSFX, gameObject);
+        RuntimeManager.PlayOneShotAttached(hitFeedback, gameObject);
 
     }
 
