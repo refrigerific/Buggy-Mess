@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FMODUnity;
 
 public class PillbugAI : MonoBehaviour
 {
@@ -105,14 +106,18 @@ public class PillbugAI : MonoBehaviour
         }
     }
 
+    [BankRef]
+    public string SFX;
     private void TakeDamage()
     {
         //TODO fiendeHealthBars ändringar     
+        RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
     }
 
     private void Death()
     {
         gameObject.SetActive(false);
+        RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
     }
 
     //HjälpMetoder
