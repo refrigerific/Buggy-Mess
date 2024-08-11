@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5846025758565778181}
   - component: {fileID: 5846025758565778178}
-  - component: {fileID: 5846025758565778179}
   - component: {fileID: 5846025758565778180}
   m_Layer: 0
   m_Name: Main Camera
@@ -109,14 +108,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5846025758565778179
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5846025758565778176}
-  m_Enabled: 1
 --- !u!114 &5846025758565778180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,10 +356,27 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   fireClip: {fileID: 0}
   reloadClip: {fileID: 0}
+  fire:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  reload:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  bulletCasingPrefab: {fileID: 0}
+  casingEjectionPoint: {fileID: 0}
   muzzleFlash: {fileID: 0}
   barrelEnd: {fileID: 5846025758309489292}
   bulletPrefab: {fileID: 4211097150041956810, guid: c08acc2be8d5e3049abb1bf9eb40be2e, type: 3}
   recoil: {fileID: 5846025758520538055}
+  ammoText: {fileID: 0}
 --- !u!114 &5846025758520538055
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -810,6 +810,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148372092}
   m_CullTransparentMesh: 1
+--- !u!1 &1359365790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846025758565778176, guid: ff5951204827358438621584d8c0e557, type: 3}
+  m_PrefabInstance: {fileID: 5846025758152191601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1359365795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359365790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1622025278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,20 +1069,40 @@ PrefabInstance:
       value: event:/Sounds/Ingame/Weapons/Revolver
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: reload.Path
+      value: event:/Sounds/UI/Holy Yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: fire.Guid.Data1
-      value: 1648169016
+      value: -1433716160
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: fire.Guid.Data2
-      value: 1192092010
+      value: 1229105601
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: fire.Guid.Data3
-      value: 360647088
+      value: 1015096989
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: fire.Guid.Data4
-      value: 1674829763
+      value: -528468524
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: reload.Guid.Data1
+      value: 800601647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: reload.Guid.Data2
+      value: 1300856880
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: reload.Guid.Data3
+      value: -934127690
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: reload.Guid.Data4
+      value: -1019344223
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: bulletCasingPrefab

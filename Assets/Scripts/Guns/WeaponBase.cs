@@ -29,11 +29,11 @@ public abstract class WeaponBase : MonoBehaviour
     //Kan ha flera specifika metoder
     public virtual void Fire()
     {
-        RuntimeManager.PlayOneShotAttached(fire, gameObject);
+        //RuntimeManager.PlayOneShotAttached(fire, gameObject);
     }
     public virtual void Reload()
     {
-        RuntimeManager.PlayOneShotAttached(reload, gameObject);
+        //RuntimeManager.PlayOneShotAttached(reload, gameObject);
     }
 
     protected virtual void Start()

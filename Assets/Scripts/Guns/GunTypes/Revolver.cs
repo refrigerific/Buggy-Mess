@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using TMPro;
 using UnityEngine;
+using FMODUnity;
 
 public class Revolver : WeaponBase
 {
@@ -29,7 +30,7 @@ public class Revolver : WeaponBase
         }
         else
         {
-            //Kan addera ett ljud om ammot är slut, typ ett klick ljud :D
+            //Kan addera ett ljud om ammot ï¿½r slut, typ ett klick ljud :D
         }
 
         if(Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
@@ -51,11 +52,13 @@ public class Revolver : WeaponBase
 
         //muzzleFlash.Play();TODO
         //Temp
-        audioSource.PlayOneShot(fireClip);
+        //audioSource.PlayOneShot(fireClip);
         //weaponAnimator.SetTrigger("Fire");
         //
         //TODO: Objectpoola
         BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
+        
+        RuntimeManager.PlayOneShotAttached(fire, gameObject);
 
         
 
@@ -72,6 +75,8 @@ public class Revolver : WeaponBase
 
     private IEnumerator ReloadRoutine()
     {
+        RuntimeManager.PlayOneShotAttached(reload, gameObject);
+        
         isReloading = true;
 
         //ReloadLjuden och animation
