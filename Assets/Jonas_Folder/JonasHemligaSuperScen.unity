@@ -135,6 +135,10 @@ PrefabInstance:
       value: event:/Sounds/Ingame/Enemy/Enemy Death
       objectReference: {fileID: 0}
     - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: hitFeedback.Path
+      value: event:/Sounds/Ingame/Enemy/Hit Feedback
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: takeDamageSFX.Path
       value: event:/Sounds/Ingame/Enemy/Enemy Hit
       objectReference: {fileID: 0}
@@ -153,6 +157,22 @@ PrefabInstance:
     - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: deathSFX.Guid.Data4
       value: -549262502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: hitFeedback.Guid.Data1
+      value: 278018485
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: hitFeedback.Guid.Data2
+      value: 1105738745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: hitFeedback.Guid.Data3
+      value: -628878681
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: hitFeedback.Guid.Data4
+      value: -1878950931
       objectReference: {fileID: 0}
     - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: takeDamageSFX.Guid.Data1
