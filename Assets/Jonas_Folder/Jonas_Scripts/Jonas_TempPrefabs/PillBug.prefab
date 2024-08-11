@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 6593428035647336847}
   - component: {fileID: 309418641263946753}
   - component: {fileID: 4056187825607227353}
+  - component: {fileID: 5173918896219915475}
   m_Layer: 0
   m_Name: AttackBox
   m_TagString: Untagged
@@ -457,7 +458,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0485dd3076ae74848a6738d3c48cb3a4, type: 2}
+  - {fileID: 2100000, guid: 3f2773f7e4462b244ba115e816123057, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -479,6 +480,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5173918896219915475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032109904543615484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f6d7855cab53d4da10d8f2d689b0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillbugAI: {fileID: 2098231331743665393}
 --- !u!1 &6282258227519544360
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   thresholdHealth: 30
+  currentHealth: 0
 --- !u!114 &2098231331743665393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +568,7 @@ MonoBehaviour:
   minDistanceBetweenEnemies: 1.5
   chasingRange: 50
   meleeZonePrefab: {fileID: 5032109904543615484}
+  damage: 10
   attackRange: 3
   attackCooldown: 1
   attackTime: 1.5

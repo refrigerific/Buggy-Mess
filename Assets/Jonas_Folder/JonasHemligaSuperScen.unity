@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: speed
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781148, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5846025758798781149, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1111,3 +1115,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   thresholdHealth: 0
+  currentHealth: 0

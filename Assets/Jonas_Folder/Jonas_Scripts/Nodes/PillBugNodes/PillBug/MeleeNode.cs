@@ -50,7 +50,7 @@ public class MeleeNode : Node
             {
                 UpdateCooldown();
             }
-
+        
             return NodeState.RUNNING;
         }
         else
@@ -63,9 +63,9 @@ public class MeleeNode : Node
     private void StartAttack()
     {
         isAttacking = true;
-        animator.SetTrigger("AttackTrigger");
+        //animator.SetTrigger("AttackTrigger");
         currentAttackTime = 0f;
-        meleeZonePrefab.SetActive(true);
+        meleeZonePrefab.SetActive(true);       
     }
 
     private void UpdateAttackTimer()
@@ -94,4 +94,5 @@ public class MeleeNode : Node
             currentCooldownTime = 0f;
         }
     }
+   
 }

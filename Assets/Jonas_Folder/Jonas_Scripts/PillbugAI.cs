@@ -21,6 +21,7 @@ public class PillbugAI : MonoBehaviour
     [Space]
     [Header("Attack variables")]
     [SerializeField] private GameObject meleeZonePrefab;
+    [SerializeField] private int damage;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackTime;
@@ -37,6 +38,7 @@ public class PillbugAI : MonoBehaviour
 
     private bool isRunningAway = false;
     public bool IsRunningAway { get { return isRunningAway; } set { isRunningAway = value; } }
+    public int Damage { get { return damage; } set { damage = value; } }
 
     private void Awake()
     {
