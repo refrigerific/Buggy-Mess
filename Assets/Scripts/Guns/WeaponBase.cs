@@ -23,7 +23,10 @@ public abstract class WeaponBase : MonoBehaviour
     protected float nextFireTime = 0f;
 
     //Kan ha flera specifika metoder
-    public abstract void Fire();
+    public virtual void Fire()
+    {
+
+    }
     public abstract void Reload();
 
     protected virtual void Start()

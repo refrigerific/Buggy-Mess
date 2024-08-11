@@ -116,7 +116,7 @@ MonoBehaviour:
   damage: 10
   lifeTime: 5
   hitEffectPrefab: {fileID: 4747982866349579265, guid: cf8c9365b454d4a42bc8d8dc3863ba80, type: 3}
-  impactEffectDuration: 2
+  impactEffectDuration: 1
 --- !u!54 &7098572894863737657
 Rigidbody:
   m_ObjectHideFlags: 0
