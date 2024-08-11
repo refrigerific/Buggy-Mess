@@ -130,6 +130,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: deathSFX.Path
+      value: event:/Sounds/Ingame/Enemy/Enemy Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: takeDamageSFX.Path
+      value: event:/Sounds/Ingame/Enemy/Enemy Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: deathSFX.Guid.Data1
+      value: 1063097907
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: deathSFX.Guid.Data2
+      value: 1109164865
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: deathSFX.Guid.Data3
+      value: -43970883
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: deathSFX.Guid.Data4
+      value: -549262502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: takeDamageSFX.Guid.Data1
+      value: -1496382147
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: takeDamageSFX.Guid.Data2
+      value: 1117892084
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: takeDamageSFX.Guid.Data3
+      value: -63247470
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: takeDamageSFX.Guid.Data4
+      value: 754574807
+      objectReference: {fileID: 0}
     - target: {fileID: 4681360968374593613, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_RootOrder
       value: 1

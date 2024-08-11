@@ -28,7 +28,7 @@ public class PillbugAI : MonoBehaviour
     [Space]
     [Header("Threshold variables")]
     [SerializeField] private float lowHealthMovementSpeed;
-    //Addera mer stat höjningar 
+    //Addera mer stat hï¿½jningar 
 
     private Material material;
    
@@ -108,21 +108,25 @@ public class PillbugAI : MonoBehaviour
         }
     }
 
-    [BankRef]
-    public string SFX;
+    //[BankRef] public string SFX;
+    public EventReference takeDamageSFX;
+    public EventReference deathSFX;
     private void TakeDamage()
     {
-        //TODO fiendeHealthBars ändringar     
-        RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
+        //TODO fiendeHealthBars ï¿½ndringar     
+        //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
+        RuntimeManager.PlayOneShotAttached(takeDamageSFX, gameObject);
+
     }
 
     private void Death()
     {
         gameObject.SetActive(false);
-        RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
+        //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
+        RuntimeManager.PlayOneShotAttached(deathSFX, gameObject);
     }
 
-    //HjälpMetoder
+    //Hjï¿½lpMetoder
     public void SetColor(Color color)
     {
         material.color = color;
