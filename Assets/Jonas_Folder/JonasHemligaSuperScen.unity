@@ -1047,6 +1047,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747704882}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: fire.Path
+      value: event:/Sounds/Ingame/Weapons/Revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: fire.Guid.Data1
+      value: 1648169016
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: fire.Guid.Data2
+      value: 1192092010
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: fire.Guid.Data3
+      value: 360647088
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: fire.Guid.Data4
+      value: 1674829763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: bulletCasingPrefab
       value: 
       objectReference: {fileID: 8676072804231500148, guid: 2ca1012691fdd8c40b5f9ac12bebe450, type: 3}

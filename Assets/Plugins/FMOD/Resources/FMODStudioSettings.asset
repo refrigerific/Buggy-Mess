@@ -486,10 +486,10 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
-  - Music/MainMusicBank
-  - SFX/SFX
+  - MainMusicBank
+  - SFX
   BanksToLoad:
   - Master
   - Master.strings

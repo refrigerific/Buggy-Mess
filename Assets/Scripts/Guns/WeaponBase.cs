@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public abstract class WeaponBase : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected AudioClip fireClip;
     [SerializeField] protected AudioClip reloadClip;
     //
+    [Header("Audio settings")]
+    [SerializeField] public EventReference fire;
+    [SerializeField] public EventReference reload;
 
     protected int currentAmmo;
     protected bool isReloading = false;
@@ -25,9 +29,12 @@ public abstract class WeaponBase : MonoBehaviour
     //Kan ha flera specifika metoder
     public virtual void Fire()
     {
-
+        RuntimeManager.PlayOneShotAttached(fire, gameObject);
     }
-    public abstract void Reload();
+    public virtual void Reload()
+    {
+        RuntimeManager.PlayOneShotAttached(reload, gameObject);
+    }
 
     protected virtual void Start()
     {
