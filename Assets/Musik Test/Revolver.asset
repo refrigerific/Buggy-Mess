@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1c674c2fd8e0c42835baeab178dc10, type: 3}
+  m_Name: Revolver
+  m_EditorClassIdentifier: 
+  fire:
+    Guid:
+      Data1: -1433716160
+      Data2: 1229105601
+      Data3: 1015096989
+      Data4: -528468524
+    Path: event:/Sounds/Ingame/Weapons/Revolver
+  reload:
+    Guid:
+      Data1: -1866078462
+      Data2: 1160120651
+      Data3: -796209761
+      Data4: -1077978029
+    Path: event:/Sounds/Ingame/Weapons/Revolver reload
+  surfaceHit:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

@@ -58,7 +58,7 @@ public class Revolver : WeaponBase
         //TODO: Objectpoola
         BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
         
-        RuntimeManager.PlayOneShotAttached(fire, gameObject);
+        RuntimeManager.PlayOneShotAttached(revolverAudio.fire, gameObject);
 
         
 
@@ -75,7 +75,7 @@ public class Revolver : WeaponBase
 
     private IEnumerator ReloadRoutine()
     {
-        RuntimeManager.PlayOneShotAttached(reload, gameObject);
+        RuntimeManager.PlayOneShotAttached(revolverAudio.reload, gameObject);
         
         isReloading = true;
 

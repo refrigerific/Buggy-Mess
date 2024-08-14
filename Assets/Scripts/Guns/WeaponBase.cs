@@ -19,8 +19,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected AudioClip reloadClip;
     //
     [Header("Audio settings")]
-    [SerializeField] public EventReference fire;
-    [SerializeField] public EventReference reload;
+    public WeaponAudioData revolverAudio;
 
     protected int currentAmmo;
     protected bool isReloading = false;

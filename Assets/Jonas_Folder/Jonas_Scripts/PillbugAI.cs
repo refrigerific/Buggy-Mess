@@ -109,16 +109,13 @@ public class PillbugAI : MonoBehaviour
     }
 
     //[BankRef] public string SFX;
-    public EventReference takeDamageSFX;
-    public EventReference hitFeedback;
-    public EventReference deathSFX;
-    public EventReference killFeedBack;
+    public EnemyAudioData pillbugAudio;
     private void TakeDamage()
     {
         //TODO fiendeHealthBars �ndringar     
         //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
-        RuntimeManager.PlayOneShotAttached(takeDamageSFX, gameObject);
-        RuntimeManager.PlayOneShotAttached(hitFeedback, gameObject);
+        RuntimeManager.PlayOneShotAttached(pillbugAudio.hurt, gameObject);
+        RuntimeManager.PlayOneShotAttached(pillbugAudio.hurtFeedback, gameObject);
 
     }
 
@@ -126,8 +123,8 @@ public class PillbugAI : MonoBehaviour
     {
         gameObject.SetActive(false);
         //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
-        RuntimeManager.PlayOneShotAttached(deathSFX, gameObject);
-        RuntimeManager.PlayOneShotAttached(killFeedBack, gameObject);
+        RuntimeManager.PlayOneShotAttached(pillbugAudio.death, gameObject);
+        RuntimeManager.PlayOneShotAttached(pillbugAudio.deathFeedback, gameObject);
     }
 
     //Hj�lpMetoder

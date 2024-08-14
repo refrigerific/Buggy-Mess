@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f157b947aba26a4f8cd96c06e4f6b89, type: 3}
+  m_Name: Pillbug
+  m_EditorClassIdentifier: 
+  hurt:
+    Guid:
+      Data1: -1496382147
+      Data2: 1117892084
+      Data3: -63247470
+      Data4: 754574807
+    Path: event:/Sounds/Ingame/Enemy/Enemy Hit
+  death:
+    Guid:
+      Data1: 1063097907
+      Data2: 1109164865
+      Data3: -43970883
+      Data4: -549262502
+    Path: event:/Sounds/Ingame/Enemy/Enemy Death
+  hurtFeedback:
+    Guid:
+      Data1: 278018485
+      Data2: 1105738745
+      Data3: -628878681
+      Data4: -1878950931
+    Path: event:/Sounds/Ingame/Enemy/Hit Feedback
+  deathFeedback:
+    Guid:
+      Data1: -1922720577
+      Data2: 1104205303
+      Data3: 603117704
+      Data4: -946857042
+    Path: event:/Sounds/Ingame/Enemy/Kill Feedback
