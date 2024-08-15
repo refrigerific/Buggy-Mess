@@ -5,27 +5,44 @@ using UnityEngine;
 
 public class RevolverBullet : BulletBase
 {
-    [SerializeField] private float impactEffectDuration = 2f;
+    private void OnEnable()
+    {
+        StartCoroutine(RemoveRoutine());
+    }
 
     protected override void OnHit(Collider other)
     {
-        //Kolla beroende på vad man träffar så byts effekten
-        //if (hitEffectPrefab != null)
-        //{
-        //    GameObject impactEffect = Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-        //    Destroy(impactEffect, impactEffectDuration);
-        //}
-
         string tag = other.tag;
         if (hitEffectsByTag.TryGetValue(tag, out GameObject hitEffect))
         {
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
-            //Destroy(hitEffect.gameObject, impactEffectDuration);
+            //TODO: Refaktorera
+            if(hitEffect == enemyHitEffectPrefab)
+            {
+                ObjectPooling.SpawnObject(hitEffect, transform.position, hitEffect.transform.rotation, ObjectPooling.PoolType.enemyImpactObject);
+            }
+            else if(hitEffect == wallHitEffectPrefab)
+            {
+                ObjectPooling.SpawnObject(hitEffect, transform.position, hitEffect.transform.rotation, ObjectPooling.PoolType.wallImpactObject);
+            }
+            else if (hitEffect == groundHitEffectPrefab)
+            {
+                ObjectPooling.SpawnObject(hitEffect, transform.position, hitEffect.transform.rotation, ObjectPooling.PoolType.groundImpactObject);
+            }
+
+            StartCoroutine(RemoveRoutine());
         }
         else
         {
             Debug.LogWarning("No hit effect found for tag: " + tag);
         }
     }
-   
+
+    private IEnumerator RemoveRoutine()
+    {
+
+        yield return new WaitForSeconds(lifeTime);
+
+        ObjectPooling.ReturnObjectToPool(gameObject);
+    }
+
 }

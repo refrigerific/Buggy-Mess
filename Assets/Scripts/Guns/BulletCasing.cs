@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 public class BulletCasing : MonoBehaviour
 {
     [SerializeField] private float lifetime = 3f;
+
+    private void OnEnable()
+    {
+        StartCoroutine(RemoveRoutine());
+    }
 
     private void Start()
     {
@@ -15,6 +21,13 @@ public class BulletCasing : MonoBehaviour
             rb.AddTorque(Random.onUnitSphere * 10f, ForceMode.Impulse);
         }
 
-        Destroy(gameObject, lifetime);
+    }
+
+    private IEnumerator RemoveRoutine()
+    {
+
+        yield return new WaitForSeconds(lifetime);
+
+        ObjectPooling.ReturnObjectToPool(gameObject);
     }
 }

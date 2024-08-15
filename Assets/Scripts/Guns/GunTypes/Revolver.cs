@@ -45,19 +45,12 @@ public class Revolver : WeaponBase
     public override void Fire()
     {
         currentAmmo--;
-        if (bulletCasingPrefab != null && casingEjectionPoint != null)
-        {
-            Instantiate(bulletCasingPrefab, casingEjectionPoint.position, casingEjectionPoint.rotation);
-        }
-
         //muzzleFlash.Play();TODO
-        //Temp
-        //audioSource.PlayOneShot(fireClip);
+
         //weaponAnimator.SetTrigger("Fire");
-        //
-        //TODO: Objectpoola
-        BulletBase bulletInstance = Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
-        
+
+        ObjectPooling.SpawnObject(bulletPrefab.gameObject, barrelEnd.transform.position, barrelEnd.transform.rotation, ObjectPooling.PoolType.revolverBullet);
+        ObjectPooling.SpawnObject(bulletCasingPrefab.gameObject, casingEjectionPoint.transform.position, casingEjectionPoint.transform.rotation, ObjectPooling.PoolType.bulletCaseObjects);
         RuntimeManager.PlayOneShotAttached(revolverAudio.fire, gameObject);
 
         
@@ -74,15 +67,9 @@ public class Revolver : WeaponBase
     }
 
     private IEnumerator ReloadRoutine()
-    {
-        RuntimeManager.PlayOneShotAttached(revolverAudio.reload, gameObject);
-        
+    {       
         isReloading = true;
-
-        //ReloadLjuden och animation
-        //weaponAnimator.SetTrigger("Reload");
-        //audioSource.PlayOneShot(reloadClip);
-
+        RuntimeManager.PlayOneShotAttached(revolverAudio.reload, gameObject);
         yield return new WaitForSeconds(reloadDuration);
         currentAmmo = maxAmmo;
         isReloading = false;

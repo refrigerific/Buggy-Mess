@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BulletBase : MonoBehaviour
 {
     [Header("General Specifics")]
+    [SerializeField] private Rigidbody rb;
     [SerializeField] protected float speed = 50f;
     [SerializeField] protected int damage = 10;
     [SerializeField] protected float lifeTime = 5f;
@@ -16,10 +17,21 @@ public abstract class BulletBase : MonoBehaviour
 
     [SerializeField] protected Dictionary<string, GameObject> hitEffectsByTag;
 
-    protected Rigidbody rb;
 
+    private Coroutine removeCoroutine;
     private void Awake()
     {
+        //StartCoroutine(RemoveRoutine());
+
+        Debug.Log($"Bullet {gameObject.name} enabled");
+
+        // Restart the coroutine every time the bullet is enabled
+        if (removeCoroutine != null)
+        {
+            StopCoroutine(removeCoroutine);
+        }
+        removeCoroutine = StartCoroutine(RemoveRoutine());
+
         hitEffectsByTag = new Dictionary<string, GameObject>
         {
             { "Enemy", enemyHitEffectPrefab },
@@ -30,10 +42,39 @@ public abstract class BulletBase : MonoBehaviour
     }
     protected virtual void Start()
     {        
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
-       
-        Destroy(gameObject, lifeTime);
+        //StartCoroutine(RemoveRoutine());
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("OnEnabled Started");
+
+        // Restart the coroutine every time the bullet is enabled
+        if (removeCoroutine != null)
+        {
+            StopCoroutine(removeCoroutine);
+        }
+        removeCoroutine = StartCoroutine(RemoveRoutine());
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log($"Bullet {gameObject.name} disabled");
+
+        // Ensure that coroutine is stopped when object is disabled
+        if (removeCoroutine != null)
+        {
+            StopCoroutine(removeCoroutine);
+        }
+    }
+
+    public void InitializeBullet(Vector3 initialVelocity)
+    {
+        // Apply the initial velocity to the Rigidbody
+        if (rb != null)
+        {
+            rb.velocity = initialVelocity != Vector3.zero ? initialVelocity : transform.forward * speed;
+        }
     }
 
     protected abstract void OnHit(Collider other);
@@ -46,7 +87,15 @@ public abstract class BulletBase : MonoBehaviour
             Debug.Log("Gör damage");
             health.TakeDamage(damage);
         }
-        OnHit(other);       
-        Destroy(gameObject);
+        OnHit(other);
+
+        ObjectPooling.ReturnObjectToPool(gameObject);
+    }
+
+    private IEnumerator RemoveRoutine()
+    {
+        yield return new WaitForSeconds(lifeTime);
+
+        ObjectPooling.ReturnObjectToPool(gameObject);
     }
 }

@@ -356,20 +356,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   fireClip: {fileID: 0}
   reloadClip: {fileID: 0}
-  fire:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  reload:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  revolverAudio: {fileID: 11400000, guid: 75371bb5fdadadf41b658619460f8d6d, type: 2}
   bulletCasingPrefab: {fileID: 0}
   casingEjectionPoint: {fileID: 0}
   muzzleFlash: {fileID: 0}
