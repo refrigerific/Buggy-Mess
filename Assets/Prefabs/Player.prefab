@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5846025758565778181}
   - component: {fileID: 5846025758565778178}
-  - component: {fileID: 5846025758565778180}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -108,22 +107,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &5846025758565778180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5846025758565778176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3737d5774b778d4cbf69a49e435315d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bobFrequency: 3
-  bobHeight: 0.5
-  bobSwayAngle: 0.8
-  smoothing: 4
 --- !u!1 &5846025758798781149
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +159,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5846025758798781149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -256,10 +239,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  sprintMultiplier: 1.5
   mouseSensitivity: 2
   jumpForce: 5
   gravity: 9.81
   cameraFov: 60
+  sprintFov: 70
+  acceleration: 10
+  airControlFactor: 0.5
+  coyoteTime: 0.2
+  enableHeadBobbing: 1
+  headBobFrequency: 8.5
+  headBobAmplitude: 0.2
+  sprintHeadBobFrequency: 10
+  sprintHeadBobAmplitude: 0.3
   playerController: {fileID: 5846025758798781120}
   playerCamera: {fileID: 5846025758565778178}
 --- !u!1001 &5846025758632871476
@@ -291,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 944945555230170449, guid: fdcce86d8a1a3254f859ea1fb7c2735a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.299
       objectReference: {fileID: 0}
     - target: {fileID: 944945555230170449, guid: fdcce86d8a1a3254f859ea1fb7c2735a, type: 3}
       propertyPath: m_LocalPosition.y

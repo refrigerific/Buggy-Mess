@@ -1168,9 +1168,13 @@ PrefabInstance:
       propertyPath: recoilAmount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5846025758565778180, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5846025758565778181, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.566
+      value: 0.677
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758798781121, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_RootOrder
@@ -1220,6 +1224,30 @@ PrefabInstance:
       propertyPath: speed
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: coyoteTime
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: headBobAmplitude
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: headBobFrequency
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: enableHeadBobbing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: sprintHeadBobAmplitude
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: sprintHeadBobFrequency
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5846025758798781148, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1235,6 +1263,10 @@ PrefabInstance:
     - target: {fileID: 5846025758798781149, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758798781151, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6646292213121456997, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_LocalPosition.x
