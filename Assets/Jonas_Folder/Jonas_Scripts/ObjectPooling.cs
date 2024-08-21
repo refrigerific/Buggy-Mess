@@ -95,7 +95,6 @@ public class ObjectPooling : MonoBehaviour
     public static void ReturnObjectToPool(GameObject obj)
     {
         string goName = obj.name.Substring(0, obj.name.Length - 7);
-
         PooledObjectInfo pool = objectPools.Find(p => p.LookUpString == goName);
 
         if (pool == null)
@@ -115,6 +114,13 @@ public class ObjectPooling : MonoBehaviour
                 rb.isKinematic = false;
             }
 
+            // Call ResetCasing if this is a bullet casing
+            BulletCasing bulletCasing = obj.GetComponent<BulletCasing>();
+            if (bulletCasing != null)
+            {
+                bulletCasing.ResetCasing();
+            }
+
             obj.transform.position = Vector3.zero;
             obj.transform.rotation = Quaternion.identity;
 
@@ -122,7 +128,6 @@ public class ObjectPooling : MonoBehaviour
             pool.InactiveObjects.Add(obj);
         }
     }
-
     private static GameObject SetParentObject(PoolType poolType)
     {
         switch (poolType)

@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Controller Options")]
-    [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float sprintMultiplier = 1.5f; // Sprint speed multiplier
-    [SerializeField] private float mouseSensitivity = 2.0f;
-    [SerializeField] private float jumpForce = 5.0f;
-    [SerializeField] private float gravity = 9.81f;
-    [SerializeField] private float cameraFov = 60.0f;
-    [SerializeField] private float sprintFov = 70.0f; // FOV during sprint
-    [SerializeField] private float acceleration = 10.0f; // Controls acceleration and deceleration
-    [SerializeField] private float airControlFactor = 0.5f; // Allows control while in the air
-    [SerializeField] private float coyoteTime = 0.2f; // Allow some leniency for jumps
-    [SerializeField] private bool enableHeadBobbing = true; // Toggle head bobbing
-    [SerializeField] private float headBobFrequency = 2.0f;
-    [SerializeField] private float headBobAmplitude = 0.1f;
-    [SerializeField] private float sprintHeadBobFrequency = 4.0f; // Increased frequency when sprinting
-    [SerializeField] private float sprintHeadBobAmplitude = 0.2f; // Increased amplitude when sprinting
-
     [Header("Components")]
     [SerializeField] private CharacterController playerController;
     [SerializeField] private Camera playerCamera;
+    [Header("Controller Options")]
+    [SerializeField][Tooltip("Sprint speed")] private float speed = 5.0f;
+    [SerializeField] [Tooltip("Sprint speed multiplier")] private float sprintMultiplier = 1.5f;
+    [SerializeField][Tooltip("Mouse sensitivity")] private float mouseSensitivity = 2.0f;
+    [SerializeField][Tooltip("Jumpforce")] private float jumpForce = 5.0f;
+    [SerializeField] [Tooltip("Sprint speed multiplier")] private float gravity = 9.81f;
+    [SerializeField] [Tooltip("Sprint speed multiplier")] private float cameraFov = 60.0f;
+    [SerializeField] [Tooltip("FOV during sprint")] private float sprintFov = 70.0f; 
+    [SerializeField] [Tooltip("Controls acceleration and deceleration")] private float acceleration = 10.0f; 
+    [SerializeField] [Tooltip("Allows control while in the air")] private float airControlFactor = 0.5f;
+    [SerializeField] [Tooltip("Allow some leniency for jumps")] private float coyoteTime = 0.2f;
+    [Header("Headbobbing")]
+    [SerializeField][Tooltip("Toggle head bobbing")] private bool enableHeadBobbing = true;
+    [SerializeField] [Tooltip("Increased bobbing frequency")] private float headBobFrequency = 2.0f;
+    [SerializeField] [Tooltip("Increased bobbing amplitude")] private float headBobAmplitude = 0.1f;
+    [SerializeField] [Tooltip("Increased frequency when sprinting")] private float sprintHeadBobFrequency = 4.0f; 
+    [SerializeField] [Tooltip("Increased amplitude when sprinting")] private float sprintHeadBobAmplitude = 0.2f; 
+
 
     private float verticalSpeed = 0.0f;
     private Vector3 moveDirection = Vector3.zero;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = playerCamera.transform;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false;;
     }
 
     private void Update()

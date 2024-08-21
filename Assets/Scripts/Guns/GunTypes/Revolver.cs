@@ -50,7 +50,9 @@ public class Revolver : WeaponBase
         //weaponAnimator.SetTrigger("Fire");
 
         ObjectPooling.SpawnObject(bulletPrefab.gameObject, barrelEnd.transform.position, barrelEnd.transform.rotation, ObjectPooling.PoolType.revolverBullet);
+
         ObjectPooling.SpawnObject(bulletCasingPrefab.gameObject, casingEjectionPoint.transform.position, casingEjectionPoint.transform.rotation, ObjectPooling.PoolType.bulletCaseObjects);
+
         RuntimeManager.PlayOneShotAttached(revolverAudio.fire, gameObject);
 
         

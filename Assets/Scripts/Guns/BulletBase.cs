@@ -10,7 +10,6 @@ public abstract class BulletBase : MonoBehaviour
     [SerializeField] protected int damage = 10;
     [SerializeField] protected float lifeTime = 5f;
     [Header("Bullet Specifics")]
-    //[SerializeField] protected GameObject hitEffectPrefab;//Gör en lista och bytt till typ partikeleffekter
     [SerializeField] protected GameObject enemyHitEffectPrefab;
     [SerializeField] protected GameObject wallHitEffectPrefab;
     [SerializeField] protected GameObject groundHitEffectPrefab;
@@ -59,8 +58,6 @@ public abstract class BulletBase : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log($"Bullet {gameObject.name} disabled");
-
         // Ensure that coroutine is stopped when object is disabled
         if (removeCoroutine != null)
         {
