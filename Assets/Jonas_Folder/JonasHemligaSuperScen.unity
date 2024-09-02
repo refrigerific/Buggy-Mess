@@ -131,6 +131,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1964704538}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: stunManager
+      value: 
+      objectReference: {fileID: 1964704543}
+    - target: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: pillbugAudio
       value: 
       objectReference: {fileID: 11400000, guid: 97d24189cf424274f924389396791c47, type: 2}
@@ -208,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4681360968374593613, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.135725
+      value: -20.66
       objectReference: {fileID: 0}
     - target: {fileID: 4681360968374593613, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_LocalRotation.w
@@ -242,8 +250,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillBug
       objectReference: {fileID: 0}
+    - target: {fileID: 6775004892012677532, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: pillbugAI
+      value: 
+      objectReference: {fileID: 193474599}
+    - target: {fileID: 6775004892012677532, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+      propertyPath: stunDuration
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+--- !u!114 &193474599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2098231331743665393, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+  m_PrefabInstance: {fileID: 193474597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a83519628ced9c438eed1551c18c21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330225723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1073,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737614018}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1964704538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 363564504560960369, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+  m_PrefabInstance: {fileID: 193474597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142303f7c5ccd743a09683032c1fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1964704543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6775004892012677532, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
+  m_PrefabInstance: {fileID: 193474597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83faf3946e93a7419749468cb05514d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2115045122
 GameObject:
   m_ObjectHideFlags: 0

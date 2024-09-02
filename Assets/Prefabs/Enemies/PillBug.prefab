@@ -564,6 +564,7 @@ MonoBehaviour:
   fov: {fileID: 3296570498059671406}
   agent: {fileID: 4232217016660696740}
   animator: {fileID: 7162400919829786858}
+  health: {fileID: 363564504560960369}
   rotationSpeed: 10
   minDistanceBetweenEnemies: 1.5
   chasingRange: 50

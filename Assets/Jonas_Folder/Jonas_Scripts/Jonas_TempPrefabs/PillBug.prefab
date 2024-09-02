@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 363564504560960369}
   - component: {fileID: 2098231331743665393}
   - component: {fileID: 3296570498059671406}
+  - component: {fileID: 6775004892012677532}
   - component: {fileID: 4232217016660696740}
   - component: {fileID: 6623861768447782282}
   - component: {fileID: 1608097024623182121}
@@ -564,6 +565,8 @@ MonoBehaviour:
   fov: {fileID: 3296570498059671406}
   agent: {fileID: 4232217016660696740}
   animator: {fileID: 7162400919829786858}
+  health: {fileID: 0}
+  pillbugAudio: {fileID: 0}
   rotationSpeed: 10
   minDistanceBetweenEnemies: 1.5
   chasingRange: 50
@@ -573,6 +576,7 @@ MonoBehaviour:
   attackCooldown: 1
   attackTime: 1.5
   lowHealthMovementSpeed: 5
+  isStunned: 0
 --- !u!114 &3296570498059671406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +594,20 @@ MonoBehaviour:
   fieldOfViewAngle: 83
   viewDistance: 10
   seesPlayer: 0
+--- !u!114 &6775004892012677532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282258227519544360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83faf3946e93a7419749468cb05514d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunDuration: 2
+  pillbugAI: {fileID: 0}
 --- !u!195 &4232217016660696740
 NavMeshAgent:
   m_ObjectHideFlags: 0

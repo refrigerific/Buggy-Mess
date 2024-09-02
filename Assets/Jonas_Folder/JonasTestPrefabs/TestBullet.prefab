@@ -114,12 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7098572894863737657}
   speed: 50
-  damage: 50
+  damage: 10
   lifeTime: 2
   enemyHitEffectPrefab: {fileID: 4747982866349579265, guid: 08c6136d1d8828c4dae52b1be8829f18, type: 3}
   wallHitEffectPrefab: {fileID: 4747982866349579265, guid: cf8c9365b454d4a42bc8d8dc3863ba80, type: 3}
   groundHitEffectPrefab: {fileID: 4747982866349579265, guid: d6409ca8e24199040bf8d637a1409add, type: 3}
-  impactEffectDuration: 5
 --- !u!54 &7098572894863737657
 Rigidbody:
   m_ObjectHideFlags: 0

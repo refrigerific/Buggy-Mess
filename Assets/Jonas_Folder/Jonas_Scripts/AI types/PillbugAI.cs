@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.AI;
 using FMODUnity;
 
-public class PillbugAI : MonoBehaviour
+public class PillbugAI : EnemyBase
 {
     [Header("Components")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private FieldOfView fov;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
+    [SerializeField] private Health health;
+    [SerializeField] private EnemyAudioData pillbugAudio;
+    [SerializeField] private StunManager stunManager;
     [Space]
     [Header("Misc variables")]
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float minDistanceBetweenEnemies;
+    [SerializeField] private float movementSpeed = 3.5f;
     [Space]
     [Header("Chase variables")]
     [SerializeField] private float chasingRange;
@@ -31,10 +35,10 @@ public class PillbugAI : MonoBehaviour
     //Addera mer stat h�jningar 
 
     private Material material;
-   
     private Node topNode;
-    private Health health;//Ta bort
-    
+    private BehaviorTree behaviorTree;
+
+    [SerializeField] private bool isStunned = false;
 
     private bool isRunningAway = false;
     public bool IsRunningAway { get { return isRunningAway; } set { isRunningAway = value; } }
@@ -43,7 +47,6 @@ public class PillbugAI : MonoBehaviour
     private void Awake()
     {
         material = GetComponent<MeshRenderer>().material;
-        health = GetComponent<Health>();//Ta bort
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerObject.transform;
@@ -51,10 +54,18 @@ public class PillbugAI : MonoBehaviour
 
     public void Start()
     {
+        //StunManager stunManager = GetComponent<StunManager>();
+        //if (stunManager != null)
+        //{
+        //    stunManager.Initialize(this); // Pass this instance to StunManager
+        //}
+        stunManager.Initialize(this);
         ConstructBehaviourTree();
+        behaviorTree = new BehaviorTree(topNode);
+        behaviorTree.Start();
 
-        health.OnDeath += Death;//Ta bort
-        health.OnDamaged += TakeDamage;//Ta bort
+        health.OnDeath += Death;
+        health.OnDamaged += TakeDamage;
     }
 
     private void ConstructBehaviourTree()
@@ -66,8 +77,12 @@ public class PillbugAI : MonoBehaviour
         MeleeNode meleeNode = new MeleeNode(agent, this, meleeZonePrefab, fov, attackCooldown, attackTime, animator);
         PillBugThresholdNode thresholdNode = new PillBugThresholdNode(agent, lowHealthMovementSpeed);
 
-        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode, });
-        Sequence MeeleeSequence = new Sequence(new List<Node> { meleeRangeNode, meleeNode });
+        // Create the stun check node
+        StunManager stunManager = GetComponent<StunManager>();
+        CheckStunnedNode checkStunnedNode = new CheckStunnedNode(stunManager);
+
+        Sequence chaseSequence = new Sequence(new List<Node> { checkStunnedNode, chasingRangeNode, chaseNode, });
+        Sequence MeeleeSequence = new Sequence(new List<Node> { checkStunnedNode, meleeRangeNode, meleeNode });
         Sequence ThresholdSequence = new Sequence(new List<Node> { healthNode, thresholdNode });
 
         topNode = new Selector(new List<Node> { ThresholdSequence, MeeleeSequence, chaseSequence });
@@ -75,22 +90,26 @@ public class PillbugAI : MonoBehaviour
 
     private void Update()
     {
-        topNode.Evaluate();
-
-        if (!isRunningAway && playerTransform != null)// && fov.SeesPlayer
+        if (!isStunned)
         {
-            Vector3 directionToPlayer = playerTransform.position - transform.position;
+            //topNode.Evaluate();
+            behaviorTree.Evaluate();
 
-            directionToPlayer.y = 0f;
-
-            if (directionToPlayer != Vector3.zero)
+            if (!isRunningAway && playerTransform != null)// && fov.SeesPlayer
             {
-                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            }
-        }
+                Vector3 directionToPlayer = playerTransform.position - transform.position;
 
-        AvoidOtherEnemies();
+                directionToPlayer.y = 0f;
+
+                if (directionToPlayer != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                }
+            }
+
+            AvoidOtherEnemies();
+        }    
     }
 
     private void AvoidOtherEnemies()
@@ -108,12 +127,48 @@ public class PillbugAI : MonoBehaviour
         }
     }
 
-    //[BankRef] public string SFX;
-    public EnemyAudioData pillbugAudio;
+    public override void SetStunned(bool stunned)
+    {
+        isStunned = stunned;
+
+        if(stunned)
+        {
+            //Stanna behaviourtreet här
+            behaviorTree.Stop();
+            //Stanna movement
+            agent.speed = 0f;
+        }
+        else
+        {
+            //Starta behaviourtreet igen
+            behaviorTree.Start();
+            //Starta movement
+            agent.speed = movementSpeed;
+        }
+    }
+
+    public override bool IsStunned()
+    {
+        return isStunned;
+    }
+
+    public bool CheckStunned()
+    {
+        //Hjälp för behaviour treet för att att kolla om den är stunnad!
+        return isStunned;
+    }
+
     private void TakeDamage()
     {
-        //TODO fiendeHealthBars �ndringar     
-        //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Hit", GetComponent<Transform>().position);
+        //TODO fiendeHealthBars �ndringar
+
+        // Stun the enemy for a certain duration
+        //StunManager stunManager = GetComponent<StunManager>();
+        //if (stunManager != null)
+        //{
+        //    stunManager.ApplyStun(stunManager.StunDuration);
+        //}
+        stunManager.ApplyStun(stunManager.StunDuration);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.hurt, gameObject);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.hurtFeedback, gameObject);
 
@@ -122,7 +177,6 @@ public class PillbugAI : MonoBehaviour
     private void Death()
     {
         gameObject.SetActive(false);
-        //RuntimeManager.PlayOneShot("event:/Sounds/Ingame/Enemy/Enemy Death",GetComponent<Transform>().position);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.death, gameObject);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.deathFeedback, gameObject);
     }
