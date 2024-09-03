@@ -33,13 +33,13 @@ public class PillbugAI : EnemyBase
     [Header("Threshold variables")]
     [SerializeField] private float lowHealthMovementSpeed;
     //Addera mer stat h�jningar 
+    [Space]
+    [SerializeField] private bool isStunned = false;
 
     private Material material;
     private Node topNode;
     private BehaviorTree behaviorTree;
-
-    [SerializeField] private bool isStunned = false;
-
+    
     private bool isRunningAway = false;
     public bool IsRunningAway { get { return isRunningAway; } set { isRunningAway = value; } }
     public int Damage { get { return damage; } set { damage = value; } }
@@ -54,11 +54,6 @@ public class PillbugAI : EnemyBase
 
     public void Start()
     {
-        //StunManager stunManager = GetComponent<StunManager>();
-        //if (stunManager != null)
-        //{
-        //    stunManager.Initialize(this); // Pass this instance to StunManager
-        //}
         stunManager.Initialize(this);
         ConstructBehaviourTree();
         behaviorTree = new BehaviorTree(topNode);
@@ -77,8 +72,7 @@ public class PillbugAI : EnemyBase
         MeleeNode meleeNode = new MeleeNode(agent, this, meleeZonePrefab, fov, attackCooldown, attackTime, animator);
         PillBugThresholdNode thresholdNode = new PillBugThresholdNode(agent, lowHealthMovementSpeed);
 
-        // Create the stun check node
-        StunManager stunManager = GetComponent<StunManager>();
+        //StunManager stunManager = GetComponent<StunManager>();
         CheckStunnedNode checkStunnedNode = new CheckStunnedNode(stunManager);
 
         Sequence chaseSequence = new Sequence(new List<Node> { checkStunnedNode, chasingRangeNode, chaseNode, });
@@ -92,7 +86,6 @@ public class PillbugAI : EnemyBase
     {
         if (!isStunned)
         {
-            //topNode.Evaluate();
             behaviorTree.Evaluate();
 
             if (!isRunningAway && playerTransform != null)// && fov.SeesPlayer
@@ -163,11 +156,6 @@ public class PillbugAI : EnemyBase
         //TODO fiendeHealthBars �ndringar
 
         // Stun the enemy for a certain duration
-        //StunManager stunManager = GetComponent<StunManager>();
-        //if (stunManager != null)
-        //{
-        //    stunManager.ApplyStun(stunManager.StunDuration);
-        //}
         stunManager.ApplyStun(stunManager.StunDuration);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.hurt, gameObject);
         RuntimeManager.PlayOneShotAttached(pillbugAudio.hurtFeedback, gameObject);

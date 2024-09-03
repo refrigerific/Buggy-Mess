@@ -5,6 +5,8 @@ using UnityEngine;
 public class StunManager : MonoBehaviour
 {
     [SerializeField] private float stunDuration = 2.0f;
+    [Tooltip("Chans att stunna. 0,1 = 10% chans")]
+    [SerializeField, Range(0f, 1f)] private float stunChance = 0.2f; // 20% default chance to stun
 
     private float stunTimer = 0f;
     private bool isStunned = false;
@@ -15,6 +17,12 @@ public class StunManager : MonoBehaviour
     {
         get { return stunDuration; }
         set { stunDuration = value; }
+    }
+
+    public float StunChance
+    {
+        get { return stunChance; }
+        set { stunChance = value; }
     }
 
     private void Update()
@@ -37,24 +45,25 @@ public class StunManager : MonoBehaviour
 
     public void ApplyStun(float duration = -1f)
     {
-        if (duration > 0f)
+        if (Random.value <= stunChance) // Random.value returns a value between 0 and 1
         {
-            stunDuration = duration;
-        }
+            if (duration > 0f)
+            {
+                stunDuration = duration;
+            }
 
-        stunTimer = stunDuration;
-        isStunned = true;
-        Debug.Log($"Gets stunned for {stunDuration} seconds!");
+            stunTimer = stunDuration;
+            isStunned = true;
 
-        if (stunnableEnemy != null)
-        {
-            stunnableEnemy.SetStunned(true);
+            if (stunnableEnemy != null)
+            {
+                stunnableEnemy.SetStunned(true);
+            }
         }
     }
 
     private void EndStun()
     {
-        Debug.Log("Stun over!");
         isStunned = false;
 
         if (stunnableEnemy != null)
