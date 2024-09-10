@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using TMPro;
 using UnityEngine;
 using FMODUnity;
@@ -53,7 +51,7 @@ public class Revolver : WeaponBase
 
         ObjectPooling.SpawnObject(bulletCasingPrefab.gameObject, casingEjectionPoint.transform.position, casingEjectionPoint.transform.rotation, ObjectPooling.PoolType.bulletCaseObjects);
 
-        RuntimeManager.PlayOneShotAttached(revolverAudio.fire, gameObject);
+        RuntimeManager.PlayOneShotAttached(weaponAudio.fire, gameObject);
 
         
 
@@ -71,7 +69,7 @@ public class Revolver : WeaponBase
     private IEnumerator ReloadRoutine()
     {       
         isReloading = true;
-        RuntimeManager.PlayOneShotAttached(revolverAudio.reload, gameObject);
+        RuntimeManager.PlayOneShotAttached(weaponAudio.reload, gameObject);
         yield return new WaitForSeconds(reloadDuration);
         currentAmmo = maxAmmo;
         isReloading = false;

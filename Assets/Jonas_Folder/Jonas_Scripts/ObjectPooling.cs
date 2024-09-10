@@ -18,6 +18,7 @@ public class ObjectPooling : MonoBehaviour
     {
         //Addera allt efter att nya saker ska poolas
         revolverBullet,
+        shotgunBullet,
         enemyImpactObject,
         wallImpactObject,
         groundImpactObject,
@@ -132,7 +133,10 @@ public class ObjectPooling : MonoBehaviour
     {
         switch (poolType)
         {
+            //Addera mer här vid nya saker
             case PoolType.revolverBullet:
+                return bulletsEmpty;
+            case PoolType.shotgunBullet:
                 return bulletsEmpty;
             case PoolType.enemyImpactObject:
                 return enemyImpactObjectEmpty;

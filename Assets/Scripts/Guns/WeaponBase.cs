@@ -13,13 +13,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     [Header("References")]
     [SerializeField] protected Animator weaponAnimator;
-    //Temp
-    [SerializeField] protected AudioSource audioSource;
-    [SerializeField] protected AudioClip fireClip;
-    [SerializeField] protected AudioClip reloadClip;
-    //
+
     [Header("Audio settings")]
-    public WeaponAudioData revolverAudio;
+    public WeaponAudioData weaponAudio;
 
     protected int currentAmmo;
     protected bool isReloading = false;

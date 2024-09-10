@@ -17,9 +17,9 @@ TagManager:
   - BulletCase
   - Bullet
   - Player
-  - 
-  - 
-  - 
+  - Wall
+  - Enemy
+  - Gun
   - 
   - 
   - 

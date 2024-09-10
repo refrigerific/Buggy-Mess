@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private CharacterController playerController;
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private GrapplingController grapplingHook;
     [Header("Controller Options")]
     [SerializeField][Tooltip("Sprint speed")] private float speed = 5.0f;
     [SerializeField] [Tooltip("Sprint speed multiplier")] private float sprintMultiplier = 1.5f;
     [SerializeField][Tooltip("Mouse sensitivity")] private float mouseSensitivity = 2.0f;
     [SerializeField][Tooltip("Jumpforce")] private float jumpForce = 5.0f;
-    [SerializeField] [Tooltip("Sprint speed multiplier")] private float gravity = 9.81f;
+    [SerializeField] [Tooltip("Gravity for the player")] private float gravity = 9.81f;
     [SerializeField] [Tooltip("Sprint speed multiplier")] private float cameraFov = 60.0f;
     [SerializeField] [Tooltip("FOV during sprint")] private float sprintFov = 70.0f; 
     [SerializeField] [Tooltip("Controls acceleration and deceleration")] private float acceleration = 10.0f; 
@@ -46,10 +47,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovementInput();
         MouseLook();
-        Move();
-        CameraOptions();
+
+        if (!grapplingHook.IsGrappling)
+        {
+            HandleMovementInput();           
+            Move();
+            CameraOptions();
+        }
+        else
+        {
+            grapplingHook.GrappleMovement();
+        }
+
+
         if (enableHeadBobbing)
         {
             HeadBob();
@@ -73,10 +84,15 @@ public class PlayerController : MonoBehaviour
         {
             lastGroundedTime = Time.time; // Update grounded time for coyote jump
             verticalSpeed = -gravity * Time.deltaTime; // Stick to ground slightly
+
+            if (Input.GetButtonDown("Jump") && (playerController.isGrounded || Time.time - lastGroundedTime <= coyoteTime))
+            {
+                verticalSpeed = jumpForce;
+            }
         }
         else
         {
-            verticalSpeed -= gravity * Time.deltaTime;
+            verticalSpeed -= gravity * Time.deltaTime; // Apply gravity if in the air
         }
 
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -99,10 +115,7 @@ public class PlayerController : MonoBehaviour
             currentVelocity = Vector3.Lerp(currentVelocity, targetMoveDirection, airControlFactor * Time.deltaTime);
         }
 
-        if (Input.GetButtonDown("Jump") && (playerController.isGrounded || Time.time - lastGroundedTime <= coyoteTime))
-        {
-            verticalSpeed = jumpForce;
-        }
+        
 
         Vector3 movement = currentVelocity + Vector3.up * verticalSpeed;
         playerController.Move(movement * Time.deltaTime);
