@@ -20,6 +20,7 @@ public class GrapplingController : MonoBehaviour
     private Vector3 grapplePoint;
     private Vector3 grappleDirection;
     private bool isGrappling = false;
+    private Vector3 currentMomentum = Vector3.zero;
     public bool IsGrappling => isGrappling;
     private float verticalSpeed = 0.0f;
     private void Start()
@@ -70,6 +71,9 @@ public class GrapplingController : MonoBehaviour
         Vector3 grappleMovement = directionToGrapple * grappleSpeed * Time.deltaTime;
         Vector3 totalMovement = grappleMovement + (horizontalMovement * sideMoveSpeed * Time.deltaTime);
 
+        // Update current momentum
+        currentMomentum = totalMovement / Time.deltaTime;
+
         // Move the player using CharacterController
         playerController.Move(totalMovement);
 
@@ -88,14 +92,8 @@ public class GrapplingController : MonoBehaviour
     {
         if (!isGrappling) return;
 
-        // Get the player's current facing direction
-        Vector3 facingDirection = transform.forward;
-
-        // Calculate the player's velocity at the end of the grapple
-        Vector3 momentum = facingDirection * grappleSpeed;
-
-        // Apply momentum boost in the facing direction
-        ApplyFinalBoost(momentum);
+        // Continue applying the last momentum
+        ApplyFinalBoost(currentMomentum);
 
         // Stop grappling
         isGrappling = false;
@@ -104,7 +102,7 @@ public class GrapplingController : MonoBehaviour
 
     private void ApplyFinalBoost(Vector3 boost)
     {
-        float decelerationDuration = grappleBoostDeceleration; // Duration for deceleration (adjust to your preference)
+        float decelerationDuration = grappleBoostDeceleration;
         StartCoroutine(SmoothMomentumAfterBoost(boost, decelerationDuration));
     }
 
@@ -114,14 +112,9 @@ public class GrapplingController : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            // Move the player using the boost
-            playerController.Move(boost * Time.deltaTime);
+            Vector3 decayedBoost = Vector3.Lerp(boost, Vector3.zero, elapsedTime / duration);
 
-            // Gradually reduce the boost over time
-            boost = Vector3.Lerp(boost, Vector3.zero, elapsedTime / duration);
-
-            // Apply final movement considering gravity and boost
-            Vector3 finalMovement = boost + Vector3.up * verticalSpeed;
+            Vector3 finalMovement = decayedBoost + Vector3.up * verticalSpeed;
             playerController.Move(finalMovement * Time.deltaTime);
 
             elapsedTime += Time.deltaTime;
