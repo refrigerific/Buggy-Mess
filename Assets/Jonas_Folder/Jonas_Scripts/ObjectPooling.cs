@@ -19,6 +19,7 @@ public class ObjectPooling : MonoBehaviour
         //Addera allt efter att nya saker ska poolas
         revolverBullet,
         shotgunBullet,
+        rocketLauncherBullet,
         enemyImpactObject,
         wallImpactObject,
         groundImpactObject,
@@ -137,6 +138,8 @@ public class ObjectPooling : MonoBehaviour
             case PoolType.revolverBullet:
                 return bulletsEmpty;
             case PoolType.shotgunBullet:
+                return bulletsEmpty;
+            case PoolType.rocketLauncherBullet:
                 return bulletsEmpty;
             case PoolType.enemyImpactObject:
                 return enemyImpactObjectEmpty;

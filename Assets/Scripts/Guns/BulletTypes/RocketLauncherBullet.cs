@@ -1,9 +1,8 @@
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RevolverBullet : BulletBase
+public class RocketLauncherBullet : BulletBase
 {
     private void OnEnable()
     {
@@ -16,11 +15,11 @@ public class RevolverBullet : BulletBase
         if (hitEffectsByTag.TryGetValue(tag, out GameObject hitEffect))
         {
             //TODO: Refaktorera
-            if(hitEffect == enemyHitEffectPrefab)
+            if (hitEffect == enemyHitEffectPrefab)
             {
                 ObjectPooling.SpawnObject(hitEffect, transform.position, hitEffect.transform.rotation, ObjectPooling.PoolType.enemyImpactObject);
             }
-            else if(hitEffect == wallHitEffectPrefab)
+            else if (hitEffect == wallHitEffectPrefab)
             {
                 ObjectPooling.SpawnObject(hitEffect, transform.position, hitEffect.transform.rotation, ObjectPooling.PoolType.wallImpactObject);
             }

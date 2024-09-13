@@ -112,12 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87e53b2e58e55e4a978efc53ada6229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  rb: {fileID: -833855685917826095}
+  lifetime: 5
   minForce: 3
   maxForce: 7
   minTorque: 5
   maxTorque: 15
-  rb: {fileID: -833855685917826095}
 --- !u!54 &-833855685917826095
 Rigidbody:
   m_ObjectHideFlags: 0

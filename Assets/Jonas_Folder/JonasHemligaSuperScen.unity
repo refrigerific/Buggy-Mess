@@ -227,21 +227,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5846025758152191609}
     m_Modifications:
+    - target: {fileID: 143734309373664282, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1221828933852724275, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 1221828933852724275, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1221828933852724275, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1806117087851857583, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3197436979492166570, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: ammoText
@@ -260,12 +264,24 @@ PrefabInstance:
       value: 0.112
       objectReference: {fileID: 0}
     - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: gunKickback
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: recoilSpeed
-      value: 20
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: recoilAmount
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: recoilAmountX
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: recoilAmountZ
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: playerTransform
@@ -276,9 +292,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: gunKickbackSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 5846025758152191605}
+    - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: gunKickbackAmount
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4022103303591380752, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: knockbackDuration
       value: 0.2
@@ -289,15 +313,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4845189894592081332, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6733984372949281789, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7807065847289663205, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8890185407135443386, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: m_RootOrder
@@ -825,6 +849,131 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a83519628ced9c438eed1551c18c21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &305417694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5846025758152191609}
+    m_Modifications:
+    - target: {fileID: 389741653704694317, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: gunKickback
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoilSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoilAmountX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoilAmountY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoilAmountZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoverySpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: gunKickbackSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: gunKickbackAmount
+      value: 0.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 407603290586765667, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: recoilKnockbackAmount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151173148042609870, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888742595342575270, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810186952457071690, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 747704882}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.389
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433332075054153750, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675036969048007309, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Name
+      value: RocketLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675036969048007309, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675036969048007309, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314655993210217218, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
 --- !u!1 &330225723
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,14 +1127,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.50211114, b: 0.084104665, a: 0.65882355}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 82a5d226e1ea1114d870e0202c508b25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2011,7 +2160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115045123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EjectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,6 +2200,10 @@ PrefabInstance:
     - target: {fileID: 5846025758309489292, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758309489293, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: maxAmmo
@@ -2127,6 +2280,26 @@ PrefabInstance:
     - target: {fileID: 5846025758520538055, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: recoilAmount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538055, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: recoilAmountX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538055, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: recoilAmountY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538055, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: recoilAmountZ
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758520538055, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: recoverySpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846025758565778176, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5846025758565778180, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_Enabled
@@ -2235,6 +2408,10 @@ PrefabInstance:
     - target: {fileID: 5846025758798781151, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302663577542902239, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6302663577542902239, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_IsActive
