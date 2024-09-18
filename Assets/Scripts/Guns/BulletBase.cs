@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BulletBase : MonoBehaviour
 {
     [Header("General Specifics")]
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] protected Rigidbody rb;
     [SerializeField] protected float speed = 50f;
     [SerializeField] protected int damage = 10;
     [SerializeField] protected float lifeTime = 5f;

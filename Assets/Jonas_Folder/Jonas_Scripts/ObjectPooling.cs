@@ -13,6 +13,7 @@ public class ObjectPooling : MonoBehaviour
     private static GameObject wallImpactObjectEmpty;
     private static GameObject groundImpactObjectEmpty;
     private static GameObject bulletCaseObjectsEmpty;
+    private static GameObject explosionObjectsEmpty;
 
     public enum PoolType
     {
@@ -24,6 +25,7 @@ public class ObjectPooling : MonoBehaviour
         wallImpactObject,
         groundImpactObject,
         bulletCaseObjects,
+        explosionObject,
         None
     }
     public static PoolType poolingType;
@@ -49,8 +51,11 @@ public class ObjectPooling : MonoBehaviour
         groundImpactObjectEmpty = new GameObject("Groundimpact objects");
         groundImpactObjectEmpty.transform.SetParent(objectPoolEmptyHolder.transform);
 
-        bulletCaseObjectsEmpty = new GameObject("Bullet case objects");
+        bulletCaseObjectsEmpty = new GameObject("Bulletcase objects");
         bulletCaseObjectsEmpty.transform.SetParent(objectPoolEmptyHolder.transform);
+
+        explosionObjectsEmpty = new GameObject("Explosion objects");
+        explosionObjectsEmpty.transform.SetParent(objectPoolEmptyHolder.transform);
     }
 
     public static GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPos, Quaternion spawnRot, PoolType poolType = PoolType.None, Vector3 initialVelocity = default)
@@ -149,6 +154,8 @@ public class ObjectPooling : MonoBehaviour
                 return groundImpactObjectEmpty;
             case PoolType.bulletCaseObjects:
                 return bulletCaseObjectsEmpty;
+            case PoolType.explosionObject:
+                return explosionObjectsEmpty; 
             case PoolType.None:
                 return null;
             default:

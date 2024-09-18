@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4737941769495224919}
   - component: {fileID: 250965967001664185}
-  - component: {fileID: 27468350022892143}
+  - component: {fileID: 6026633286971756852}
   m_Layer: 7
-  m_Name: Rocket
+  m_Name: HomingRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &27468350022892143
+--- !u!114 &6026633286971756852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,12 +60,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1723173441506886702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aca5f8e7fc74d44a999b7fc27bae75c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bb56ec087a3d324ab9144dba9309702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 250965967001664185}
-  speed: 50
-  damage: 100
+  speed: 20
+  damage: 20
   lifeTime: 5
   enemyHitEffectPrefab: {fileID: 4747982866349579265, guid: 08c6136d1d8828c4dae52b1be8829f18, type: 3}
   wallHitEffectPrefab: {fileID: 4747982866349579265, guid: cf8c9365b454d4a42bc8d8dc3863ba80, type: 3}
@@ -76,6 +76,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   explosionEffect: {fileID: 5074896125000636913, guid: e5400dcdf04803c41baf408cf831592a, type: 3}
+  lockOnDelay: 0.5
+  turnSpeed: 2.5
+  detectionRadius: 50
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &6724888175581736234
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47f3e4d690bf053469cf5835c28f07b1, type: 2}
+  - {fileID: 2100000, guid: f862f69a0dadd0e4b865a41421a5a7a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47f3e4d690bf053469cf5835c28f07b1, type: 2}
+  - {fileID: 2100000, guid: f862f69a0dadd0e4b865a41421a5a7a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
