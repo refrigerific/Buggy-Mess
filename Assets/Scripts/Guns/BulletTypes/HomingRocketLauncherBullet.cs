@@ -8,6 +8,7 @@ public class HomingRocketLauncherBullet : BulletBase
     [SerializeField] private float explosionForce = 700f;
     [SerializeField] private LayerMask explosionLayers;
     [SerializeField] private GameObject explosionEffect;
+    [Header("Homing variables")]
     [SerializeField] [Range(0.1f, 2f)] private float lockOnDelay = 0.5f;
     [SerializeField] private float turnSpeed = 5f;
     [SerializeField] private float detectionRadius = 50f; // Radius to detect enemies
