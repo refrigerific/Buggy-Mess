@@ -72,7 +72,6 @@ public class PillbugAI : EnemyBase
         MeleeNode meleeNode = new MeleeNode(agent, this, meleeZonePrefab, fov, attackCooldown, attackTime, animator);
         PillBugThresholdNode thresholdNode = new PillBugThresholdNode(agent, lowHealthMovementSpeed);
 
-        //StunManager stunManager = GetComponent<StunManager>();
         CheckStunnedNode checkStunnedNode = new CheckStunnedNode(stunManager);
 
         Sequence chaseSequence = new Sequence(new List<Node> { checkStunnedNode, chasingRangeNode, chaseNode, });
@@ -84,6 +83,8 @@ public class PillbugAI : EnemyBase
 
     private void Update()
     {
+        agent.SetDestination(playerTransform.position);
+
         if (!isStunned)
         {
             behaviorTree.Evaluate();

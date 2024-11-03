@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282258227519544360, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467771106969901749, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_Layer
@@ -754,6 +754,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747704882}
     - target: {fileID: 3197436979492166570, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+      propertyPath: fireRate
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197436979492166570, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
       propertyPath: weaponAudio
       value: 
       objectReference: {fileID: 0}
@@ -871,6 +875,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+--- !u!114 &173475893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3197436979492166570, guid: 6d3b2bea8d870a14a81ebd63d20b7146, type: 3}
+  m_PrefabInstance: {fileID: 173475892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc004b37b80e7ec4db3f4dc80df70210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &193474597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1472,7 +1487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7675036969048007309, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8314655993210217218, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
       propertyPath: m_Layer
@@ -1480,6 +1495,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+--- !u!114 &305417695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2810186952457071690, guid: 5e39f8f98363099498a7df369b557a8b, type: 3}
+  m_PrefabInstance: {fileID: 305417694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb90d2595ad336f42a749059b05b9796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330225723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282258227519544360, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467771106969901749, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_Layer
@@ -2822,7 +2848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282258227519544360, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467771106969901749, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_Layer
@@ -3401,7 +3427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282258227519544360, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467771106969901749, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
       propertyPath: m_Layer
@@ -3686,7 +3712,7 @@ MonoBehaviour:
   grappleSpeed: 40
   grappleStopDistance: 2
   sideMoveSpeed: 15
-  grappleBoostDeceleration: 0.75
+  grappleBoostDeceleration: 1
 --- !u!1 &1622025278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,6 +4004,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737614018}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1949295601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5846025758520538050, guid: ff5951204827358438621584d8c0e557, type: 3}
+  m_PrefabInstance: {fileID: 5846025758152191601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dabeb0ea179268428cf194337a4acac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1964704538 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 363564504560960369, guid: 40198a2625456c14da482a57c03f0c52, type: 3}
@@ -4378,6 +4415,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1580888855}
     - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
+      propertyPath: weaponInventory
+      value: 
+      objectReference: {fileID: 5846025758152191606}
+    - target: {fileID: 5846025758798781123, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: headBobAmplitude
       value: 0.25
       objectReference: {fileID: 0}
@@ -4427,7 +4468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6302663577542902239, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6646292213121456997, guid: ff5951204827358438621584d8c0e557, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4469,6 +4510,22 @@ CharacterController:
   m_CorrespondingSourceObject: {fileID: 5846025758798781120, guid: ff5951204827358438621584d8c0e557, type: 3}
   m_PrefabInstance: {fileID: 5846025758152191601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5846025758152191606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846025758152191602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96085f150a70d1f42a2a887711e39a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1949295601}
+  - {fileID: 173475893}
+  - {fileID: 305417695}
 --- !u!20 &5846025758152191608 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5846025758565778178, guid: ff5951204827358438621584d8c0e557, type: 3}

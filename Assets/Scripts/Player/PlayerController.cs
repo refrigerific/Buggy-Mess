@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController playerController;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private GrapplingController grapplingHook;
+    [SerializeField] private InventorySystem weaponInventory;
     [Header("Controller Options")]
     [SerializeField][Tooltip("Sprint speed")] private float speed = 5.0f;
     [SerializeField] [Tooltip("Sprint speed multiplier")] private float sprintMultiplier = 1.5f;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
 
     private float verticalSpeed = 0.0f;
-    private Vector3 moveDirection = Vector3.zero;
+    //private Vector3 moveDirection = Vector3.zero;
     private Vector3 currentVelocity = Vector3.zero;
     private float xRotation = 0f;
     private Transform cameraTransform;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MouseLook();
+        WeaponSwapping();
 
         if (!grapplingHook.IsGrappling)
         {
@@ -157,6 +159,19 @@ public class PlayerController : MonoBehaviour
         {
             headBobTimer = 0f;
             cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, new Vector3(0, 1, 0), Time.deltaTime * 10f);
+        }
+    }
+
+    private void WeaponSwapping()
+    {
+        //TODO kunna byta knappar för vapen
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            weaponInventory.PreviousWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            weaponInventory.NextWeapon();
         }
     }
 }
